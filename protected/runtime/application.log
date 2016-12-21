@@ -1,0 +1,71 @@
+2016/12/21 12:09:14 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'blogHub.tbl_migration' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `tbl_migration`.
+2016/12/21 12:09:18 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in /home/akash/projects/blogHub/protected/migrations/m161221_062028_user.php:22
+Stack trace:
+#0 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m161221_062028_...')
+#1 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m161221_062028_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /home/akash/projects/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /home/akash/projects/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /home/akash/projects/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /home/akash/projects/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /home/akash/projects/yii/framework/yiic.php(33): CApplication->run()
+#8 /home/akash/projects/blogHub/protected/yiic.php(7): require_once('/home/akash/pro...')
+#9 /home/akash/projects/blogHub/protected/yiic(4): require_once('/home/akash/pro...')
+#10 {main}
+---
+2016/12/21 12:10:11 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in /home/akash/projects/blogHub/protected/migrations/m161221_062028_user.php:22
+Stack trace:
+#0 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m161221_062028_...')
+#1 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m161221_062028_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /home/akash/projects/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /home/akash/projects/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /home/akash/projects/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /home/akash/projects/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /home/akash/projects/yii/framework/yiic.php(33): CApplication->run()
+#8 /home/akash/projects/blogHub/protected/yiic.php(7): require_once('/home/akash/pro...')
+#9 /home/akash/projects/blogHub/protected/yiic(4): require_once('/home/akash/pro...')
+#10 {main}
+---
+2016/12/21 12:10:39 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in /home/akash/projects/blogHub/protected/migrations/m161221_062028_user.php:22
+Stack trace:
+#0 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m161221_062028_...')
+#1 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m161221_062028_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /home/akash/projects/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /home/akash/projects/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /home/akash/projects/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /home/akash/projects/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /home/akash/projects/yii/framework/yiic.php(33): CApplication->run()
+#8 /home/akash/projects/blogHub/protected/yiic.php(7): require_once('/home/akash/pro...')
+#9 /home/akash/projects/blogHub/protected/yiic(4): require_once('/home/akash/pro...')
+#10 {main}
+---
+2016/12/21 12:12:01 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in /home/akash/projects/blogHub/protected/migrations/m161221_062028_user.php:21
+Stack trace:
+#0 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m161221_062028_...')
+#1 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m161221_062028_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /home/akash/projects/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /home/akash/projects/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /home/akash/projects/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /home/akash/projects/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /home/akash/projects/yii/framework/yiic.php(33): CApplication->run()
+#8 /home/akash/projects/blogHub/protected/yiic.php(7): require_once('/home/akash/pro...')
+#9 /home/akash/projects/blogHub/protected/yiic(4): require_once('/home/akash/pro...')
+#10 {main}
+---
+2016/12/21 12:16:09 [error] [exception.ParseError] ParseError: syntax error, unexpected 'public' (T_PUBLIC) in /home/akash/projects/blogHub/protected/migrations/m161221_062028_user.php:22
+Stack trace:
+#0 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(414): MigrateCommand->instantiateMigration('m161221_062028_...')
+#1 /home/akash/projects/yii/framework/cli/commands/MigrateCommand.php(109): MigrateCommand->migrateUp('m161221_062028_...')
+#2 [internal function]: MigrateCommand->actionUp(Array)
+#3 /home/akash/projects/yii/framework/console/CConsoleCommand.php(172): ReflectionMethod->invokeArgs(Object(MigrateCommand), Array)
+#4 /home/akash/projects/yii/framework/console/CConsoleCommandRunner.php(71): CConsoleCommand->run(Array)
+#5 /home/akash/projects/yii/framework/console/CConsoleApplication.php(92): CConsoleCommandRunner->run(Array)
+#6 /home/akash/projects/yii/framework/base/CApplication.php(185): CConsoleApplication->processRequest()
+#7 /home/akash/projects/yii/framework/yiic.php(33): CApplication->run()
+#8 /home/akash/projects/blogHub/protected/yiic.php(7): require_once('/home/akash/pro...')
+#9 /home/akash/projects/blogHub/protected/yiic(4): require_once('/home/akash/pro...')
+#10 {main}
+---
