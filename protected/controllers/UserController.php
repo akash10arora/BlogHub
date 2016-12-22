@@ -19,108 +19,86 @@ class UserController extends Controller {
 
 			$view =  Post::model()->findByPk($id);
 			if(!$view){
-				//empty
-			}   else {
-
+				$this->renderPrint('Account does not exist.');
+			}   
+			else{
 				echo CJSON::encode(array('status'=>'SUCCESS','id'=>$view->id,'content'=>$view->content));   
 			}
 		}
 
- public function actionViewNewsfeed($id) {												//view all posts
- 	$posts = Post::model()->findAllByAttributes(array('user_id'=>$id));
- 	$posts_data = array();
- 	foreach ($posts as $post) {
- 		$posts_data[] = array('id'=>$post->id, 'content'=>$post->content);
- 	}
- 	echo CJSON::encode(array('status'=>'SUCCESS',
- 		'posts_data'=>$posts_data
- 		));
- }
-
-/*
-public function actionNewsfeeds(){
-
-	 echo "News Feeds </br>";
-	 //$posts = Post::model()->findAllByAttributes(array('user_id'=>$id));
-	 //$posts = Post::model()->findAll("user_id = :user_id", array('user_id'=>$id));
-	 //$posts = Post::model()->findAll(array('condition'=>"user_id = :user_id", 'params'=>array('user_id'=>$id)));
-	 $posts = Post::model()->findAll(array('condition'=>"user_id != :user_id", 'params'=>array('user_id'=>$id), 'order'=>'created_at DESC', 'limit'=>10));
-
-	 if(!$posts) {
-
-
+	 public function actionViewNewsfeed($id) {												//view all posts
+	 	$posts = Post::model()->findAllByAttributes(array('user_id'=>$id));
+	 	$posts_data = array();
+	 	foreach ($posts as $post) {
+	 		$posts_data[] = array('id'=>$post->id, 'content'=>$post->content);
+	 	}
+	 	echo CJSON::encode(array('status'=>'SUCCESS',
+	 		'posts_data'=>$posts_data));
 	 }
-	 else{
 
-			 $posts_data = array();
-
-			 foreach ($posts as $post) {
-				 $posts_data[] = array('id'=>$post->id, //'content'=>$post->content, 
-				 'user_name'=>$post->user->name);
-}
-echo CJSON::encode(array('status'=>'SUCCESS',
- 'posts_data'=>$posts_data
- ));
-}
-}*/
-
-
-public function actionProfile($id) {                //user profile by id
-	$user = User::model()->findbyPK($id);
-	if(!$user) {
-		echo "Account does not exist.";
-
+	public function actionProfile($id) {                //user profile by id
+		$user = User::model()->findbyPK($id);
+		if(!$user) {
+			$this->renderPrint('Account does not exist.');
+		}
+		else {
+			echo CJSON::encode(array('status'=>'SUCCESS', 'name'=>$user->name, 'email'=>$user->email));
+		} 
 	}
-	else {
-		echo CJSON::encode(array('status'=>'SUCCESS','name'=>$user->name,'email'=>$user->email));
-	}
-}
 
-public function actionLogin($id) {
-	$user = User::model()->findbyPK($id);
-	if(!$user) {
-		echo "Account does not exist.";
-	}
-	else {
-				//    echo 'hi';
-		echo CJSON::encode(array('id'=>$user->id,'status'=>'SUCCESS'));
-	}
-}
-
-
-public function actionSearchProfile($name){
-	$users = User::model()->findAllByAttributes(array('name'=>$name));
-	if(!$user) {
-		echo "Account does not exist.";
-	}
-	else{
-		$users_profile = array();
-		foreach($users as $user){
-			$users_profile[] = array('user_id'=>$user->id, 'user_name'=>$user->name, 'email'=>$user->email);
+	public function actionLogin($id) {
+		$user = User::model()->findbyPK($id);
+		if(!$user) {
+			$this->renderPrint('Account does not exist.');
+		}
+		else {
+			echo CJSON::encode(array('status'=>'SUCCESS', 'id'=>$user->id));
 		}
 	}
-	echo CJSON::encode(array('status'=>'SUCCESS', 'users_profile'=>$users_profile));
-}
- public function actionDelete($id){                  //delete user
 
- 	$users = User::model()->findByPk($id);
- 	$users->status = 2;
- 	$users->save();
- }
 
-	 public function actionRecover($id){                  //activate user
-
-	 	$users = User::model()->findByPk($id);
-	 	$users->status = 1;
-	 	$users->save();
-	 }
-	 public function actionUpdate($str, $id){
-
-	 	$post = Post::model()->findByPk($id);
-	 	if($post->status == 1){
-
-	 		$post->content = $str;
-	 		$post->save();
-	 	}
-	 }
+	public function actionSearchProfile($name){
+		$users = User::model()->findAllByAttributes(array('name'=>$name));
+		if(!$users) {
+			$this->renderPrint('Account does not exist.');
+		}
+		else{
+			$users_profile = array();
+			foreach($users as $user){
+				$users_profile[] = array('user_id'=>$user->id, 'user_name'=>$user->name, 'email'=>$user->email);
+			}	
+		}
+		echo CJSON::encode(array('status'=>'SUCCESS', 'users_profile'=>$users_profile));
 	}
+
+	public function actionDelete($id){                 
+		$users = User::model()->findByPk($id);
+		$users->status = Comment::STATUS_DEACTIVATED;
+		$users->save();
+		$this->renderPrint('Account Deactivated');
+	}
+
+	public function actionRecover($id){                  
+		$users = User::model()->findByPk($id);	
+		$users->status = Comment::STATUS_ACTIVE;
+		$users->save();
+		$this->renderPrint('Account Activated');
+	}
+
+	public function actionUpdateEmail($emailid, $id){
+		$users = User::model()->findByPk($id);
+		if($users->status == Comment::STATUS_ACTIVE){
+			$users->email = $emailid;	
+			$users->save();
+			$this->renderPrint('Account Updated');	
+		}
+	}
+	public function actionUpdatePassword($passwordid, $id){
+		$users = User::model()->findByPk($id);
+		if($users->status == Comment::STATUS_ACTIVE){
+			$users->password = $passwordid;
+			$users->save();
+			$this->renderPrint('Account Updated');	
+		}
+	}
+}

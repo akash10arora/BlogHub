@@ -1,13 +1,13 @@
 <?php
 
- /* @property string $id
- /* @property string $name
- /* @property string $email
- /* @property string $password
- /* @property integer $status
- /* @property integer $created_at
- /* @property integer $updated_at
- */
+/* @property string $id
+/* @property string $name
+/* @property string $email
+/* @property string $password
+/* @property integer $status
+/* @property integer $created_at
+/* @property integer $updated_at
+*/
  class User extends CActiveRecord
  {
  	const STATUS_ACTIVE = 1;
@@ -35,7 +35,7 @@
  			'post'=>			array(self::HAS_MANY, 'Post', 'user_id'),
  			'comments'=>		array(self::HAS_MANY, 'Comment', 'user_id'),
  			'likes'=>			array(self::HAS_MANY, 'Like', 'user_id'),
- 			
+
  			'post_count' =>		array(self::STAT, 'Post', 'user_id'),
  			'comments_count' => array(self::STAT, 'Comment', 'user_id'),
  			'likes_count' => 	array(self::STAT, 'Like', 'user_id'),
@@ -63,6 +63,14 @@
  		$model->attributes = $attributes;
  		$model->save();
  		return $model;
+ 	}
+
+ 	public function scopes() {
+ 		return array(
+ 			'active'=>array('condition'=>"status = :status_active", 'params'=>array('status_active'=>self::STATUS_ACTIVE)),
+ 			'deactivated'=>array('condition'=>"status = :status_deactivated", 'params'=>array('status_deactivated'=>self::STATUS_DEACTIVATED)),
+ 			);
+ 		
  	}
  }
 
