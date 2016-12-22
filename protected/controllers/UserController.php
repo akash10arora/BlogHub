@@ -58,26 +58,25 @@ class UserController extends Controller {
 			'posts_data'=>$posts_data));
 	}
 
-	/*public function actionProfile($id) {                //user profile by id
-		$user = User::model()->findByPk($id);
-		if(!$user) {
+	public function actionProfile($id) {                //user profile by id
+		if(!$this->_user) {
 			$this->renderPrint('Account does not exist.');
 		}
 		else {
-			echo CJSON::encode(array('status'=>'SUCCESS', 'name'=>$user->name, 'email'=>$user->email));
+			echo CJSON::encode(array('status'=>'SUCCESS', 'name'=>$this->_user->name, 'email'=>$this->_user->email));
 		} 
 	}
 
+
 	public function actionLogin($id) {
-		$user = User::model()->findByPk($id);
-		if(!$user) {
+		if(!$this->_user) {
 			$this->renderPrint('Account does not exist.');
 		}
 		else {
-			echo CJSON::encode(array('status'=>'SUCCESS', 'id'=>$user->id));
+			echo CJSON::encode(array('status'=>'SUCCESS', 'id'=>$this->_user->id));
 		}
 	}
-*/
+
 
 	public function actionSearchProfile($name){
 		$users = User::model()->findAllByAttributes(array('name'=>$name));
@@ -114,7 +113,7 @@ class UserController extends Controller {
 		if($this->_user->status == Comment::STATUS_ACTIVE){
 			$this->_user->email = $emailid;	
 			$this->_user-ssave();
-			$this->renderPrint('Email ID Updated');	
+			$this->renderPrint('Email hw_InsDoc(connection, parentID, object_record) Updated');	
 		}
 	}
 	public function actionUpdatePassword($password, $id){
