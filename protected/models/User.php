@@ -72,6 +72,15 @@
  			);
  		
  	}
+ 	public function deactivate() {
+		$this->status = Post::STATUS_DEACTIVATED;
+		$this->save();
+	}
+
+	public function activate() {
+		$this->status = Post::STATUS_ACTIVE;
+		$this->save();
+	}
  }
 
 
